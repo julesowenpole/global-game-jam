@@ -4,9 +4,15 @@ using UnityEngine.UI;
 public class MaskToolBehaviour : MonoBehaviour
 {
     public MaskManager maskManager;
-    public int maskId = 0;
-    
-    void Update() {
+    [SerializeField] public int maskId;
+
+    void Start()
+    {
+        GetComponent<Image>().enabled = false;
+    }
+
+    void Update()
+    {
         GetComponent<Image>().enabled = maskManager.IsMaskFound(maskId);
     }
 }

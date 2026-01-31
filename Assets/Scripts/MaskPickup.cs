@@ -3,6 +3,7 @@ using UnityEngine;
 public class MaskPickup : MonoBehaviour
 {
     public MaskType maskType;
+    [SerializeField]public int maskId;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,7 +14,7 @@ public class MaskPickup : MonoBehaviour
                 blood.Reveal();
 
             // Update global storage FIRST mask only (id 0)
-            Object.FindFirstObjectByType<MaskManager>().SetMaskFound(0, true);
+            Object.FindFirstObjectByType<MaskManager>().SetMaskFound(maskId, true);
             Debug.Log(Object.FindFirstObjectByType<MaskManager>().IsMaskFound(0));
 
             other.GetComponent<PlayerMask>().EquipMask(maskType);
