@@ -9,6 +9,8 @@ public class MaskPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Mask picked up!");
+            foreach (var blood in FindObjectsOfType<BloodClue>())
+                blood.Reveal();
             other.GetComponent<PlayerMask>().EquipMask(maskType);
             Destroy(gameObject);
         }
@@ -18,7 +20,10 @@ public class MaskPickup : MonoBehaviour
 public enum MaskType
 {
     None,
-    Fire,
-    Shadow,
-    Light
+    Blood,      // Paprika
+    Oracle,    // Turmeric
+    Tracker,   // Basil
+    Infrared,  // Lavender
+    Empathy    // Pepper
 }
+

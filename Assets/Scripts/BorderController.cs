@@ -6,22 +6,22 @@ public class BorderController : MonoBehaviour
     public Image borderImage; 
 
     public Color noneColor = Color.white;
-    public Color fireColor = Color.red;
-    public Color shadowColor = Color.gray;
-    public Color lightColor = Color.yellow;
+    public Color bloodColor = Color.red;
+    public Color empathyColor = Color.gray;
+    public Color oracleColor = Color.yellow;
 
     public void SetBorder(MaskType mask)
     {
         switch (mask)
         {
-            case MaskType.Fire:
-                borderImage.color = fireColor;
+            case MaskType.Blood:
+                borderImage.color = bloodColor;
                 break;
-            case MaskType.Shadow:
-                borderImage.color = shadowColor;
+            case MaskType.Empathy:
+                borderImage.color = empathyColor;
                 break;
-            case MaskType.Light:
-                borderImage.color = lightColor;
+            case MaskType.Oracle:
+                borderImage.color = oracleColor;
                 break;
             case MaskType.None:
             default:
