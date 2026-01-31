@@ -4,7 +4,7 @@ public class MaskPickup : MonoBehaviour
 {
     public MaskType maskType;
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnMouseDown()
     {
         if (other.CompareTag("Player"))
         {
