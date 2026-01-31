@@ -9,6 +9,8 @@ public class MaskPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Mask picked up!");
+            foreach (var blood in FindObjectsOfType<BloodClue>())
+                blood.Reveal();
 
             // Update global storage FIRST mask only (id 0)
             Object.FindFirstObjectByType<MaskManager>().SetMaskFound(0, true);
@@ -24,7 +26,10 @@ public class MaskPickup : MonoBehaviour
 public enum MaskType
 {
     None,
-    Fire,
-    Shadow,
-    Light
+    Blood,      // Paprika
+    Oracle,    // Turmeric
+    Tracker,   // Basil
+    Infrared,  // Lavender
+    Empathy    // Pepper
 }
+
