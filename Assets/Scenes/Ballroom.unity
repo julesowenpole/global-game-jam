@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6dfd5cdeb3a438d81adcf545da61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskPickup
-  maskType: 0
+  maskType: 1
 --- !u!1 &1860806100
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,5 +28,6 @@ public class BorderController : MonoBehaviour
                 borderImage.color = noneColor;
                 break;
         }
+        Debug.Log("Mask: " + mask + " Colour: " + borderImage.color);
     }
 }

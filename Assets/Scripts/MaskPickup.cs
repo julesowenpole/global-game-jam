@@ -8,6 +8,7 @@ public class MaskPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Mask picked up!");
             other.GetComponent<PlayerMask>().EquipMask(maskType);
             Destroy(gameObject);
         }
