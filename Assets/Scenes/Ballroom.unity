@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMask
   currentMask: 0
-  borderController: {fileID: 0}
+  borderController: {fileID: 1172602766}
 --- !u!1 &990139691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,11 +1957,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840794062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a562f1b0c11437d9170c3600b10532, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d6dfd5cdeb3a438d81adcf545da61be, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMask
-  currentMask: 0
-  borderController: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::MaskPickup
+  maskType: 0
 --- !u!1 &1860806100
 GameObject:
   m_ObjectHideFlags: 0

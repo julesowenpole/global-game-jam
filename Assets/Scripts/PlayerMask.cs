@@ -7,6 +7,7 @@ public class PlayerMask : MonoBehaviour
 
     public void EquipMask(MaskType newMask)
     {
+        Debug.Log("EquipMask Running");
         currentMask = newMask;
         if (borderController != null)
             borderController.SetBorder(currentMask);
