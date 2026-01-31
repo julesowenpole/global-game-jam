@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class PlayerMask : MonoBehaviour
 {
-    public MaskType currentMask;
+    public MaskType currentMask = MaskType.None;
     public BorderController borderController;
 
     public void EquipMask(MaskType newMask)
     {
         currentMask = newMask;
-        borderController.SetBorder(newMask);
+        if (borderController != null)
+            borderController.SetBorder(currentMask);
     }
 }
