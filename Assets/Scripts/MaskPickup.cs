@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MaskPickup : MonoBehaviour
 {
-    public MaskType maskType;
+    public MaskManager maskManager;
     [SerializeField] public int maskId;
 
     void OnMouseDown()
@@ -13,22 +13,13 @@ public class MaskPickup : MonoBehaviour
         {
             Debug.Log("Mask picked up!");
 
-            // Reveal all blood clues
-            foreach (var blood in FindObjectsOfType<BloodClue>())
-                blood.Reveal();
-
             // Update global mask storage
-            MaskManager maskManager = Object.FindFirstObjectByType<MaskManager>();
             if (maskManager != null)
             {
                 maskManager.SetMaskFound(maskId, true);
-                Debug.Log(maskManager.IsMaskFound(0));
+                maskManager.EquipMask(maskId);
+                Debug.Log(maskManager.IsMaskFound(maskId));
             }
-
-            // Equip mask on player
-            PlayerMask playerMask = player.GetComponent<PlayerMask>();
-            if (playerMask != null)
-                playerMask.EquipMask(maskType);
 
             // Destroy the mask object
             Destroy(gameObject);
