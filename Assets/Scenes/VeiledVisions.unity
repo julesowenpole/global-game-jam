@@ -3603,7 +3603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6dfd5cdeb3a438d81adcf545da61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskPickup
-  maskManager: {fileID: 0}
+  maskManager: {fileID: 641720623}
   maskId: 3
 --- !u!61 &575237026
 BoxCollider2D:
@@ -4116,7 +4116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6dfd5cdeb3a438d81adcf545da61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaskPickup
-  maskManager: {fileID: 0}
+  maskManager: {fileID: 641720623}
   maskId: 2
 --- !u!212 &605684916
 SpriteRenderer:
@@ -9284,7 +9284,7 @@ MonoBehaviour:
       all knew Masky too well, it would just be too depressing if we did it... and
       it eliminates any biases we might have. '
     dialogueDuration: 4
-    nextEventDelay: 300
+    nextEventDelay: 120
     patrolObject1: {fileID: 0}
     patrolPointA1: {x: -5, y: 0}
     patrolPointB1: {x: 5, y: 0}
@@ -9293,7 +9293,7 @@ MonoBehaviour:
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
     timer: {fileID: 2140070711}
-    timerDuration: 300
+    timerDuration: 120
     startTimerOnEvent: 1
     teleportObject: {fileID: 0}
     teleportOnEvent: 0

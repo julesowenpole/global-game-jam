@@ -70,6 +70,8 @@ public class MaskManager : MonoBehaviour
 
     void Start()
     {
+        masksFound[0] = true;  // Mask 0 found at start
+        EquipMask(0);  // Equip it immediately
         UpdateDisplay();
     }
 
