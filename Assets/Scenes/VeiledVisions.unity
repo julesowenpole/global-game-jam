@@ -2630,7 +2630,7 @@ Transform:
   m_GameObject: {fileID: 625441450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.59, y: -13.39, z: 0}
+  m_LocalPosition: {x: -29.59, y: -9.55, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.22925998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5143,6 +5143,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709158814}
+    - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1402762043}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8143224641611047240, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
@@ -5281,12 +5284,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74687610cedde430bac9bdd1aeb61adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryManager
-  allCharacters: []
-  dialogueParent: {fileID: 0}
+  allManagedObjects:
+  - {fileID: 877530003}
+  - {fileID: 625441450}
+  - {fileID: 1343040320}
+  - {fileID: 1412438758}
+  - {fileID: 12780207}
+  - {fileID: 505359162}
+  - {fileID: 694364463}
+  - {fileID: 1370071268}
+  dialogueParent: {fileID: 1402762043}
   events:
+  - eventName: Walk-in Intro
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Welcome to the M.A.S.K.
+    dialogueDuration: 6
+    nextEventDelay: 10
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 625441450}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - eventName: 
-    showCharacters: []
-    hideCharacters: []
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
     dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
     dialogueText: Default dialogue
     dialogueDuration: 0
@@ -5884,7 +5989,7 @@ Transform:
   m_GameObject: {fileID: 1343040320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.27, y: -13.4, z: 0}
+  m_LocalPosition: {x: -28.27, y: -9.51, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.22925998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6055,6 +6160,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1884171761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1402762042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402762043}
+  - component: {fileID: 1402762045}
+  - component: {fileID: 1402762044}
+  m_Layer: 5
+  m_Name: DialogueContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1402762043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172602770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1402762044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1402762045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_CullTransparentMesh: 1
 --- !u!1 &1412438758
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,96 +2,123 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.Events;  // Custom actions support
+using UnityEngine.Events;
 
-// Manages timed story sequences - toggles characters, spawns dialogue with custom text, runs game actions
+// Manages timed story sequences with automatic object state management
 public class StoryManager : MonoBehaviour
 {
-    // Serializable class for Inspector-editable story events
     [System.Serializable]
     public class StoryEvent
     {
-        public string eventName;           // Debug label for events
-        public GameObject[] showCharacters; // Characters to activate (SetActive(true))
-        public GameObject[] hideCharacters; // Characters to deactivate (SetActive(false))
-        public GameObject dialoguePrefab;   // UI prefab to spawn (null = skip)
-        public string dialogueText = "Default dialogue";  // Custom text per event
-        public float dialogueDuration = 3f; // How long dialogue stays visible
-        public float nextEventDelay = 2f;   // Pause AFTER dialogue before next event
+        public string eventName;
+        public GameObject[] showObjects;     // Objects to SHOW (activates if inactive)
+        public GameObject[] hideObjects;     // Objects to HIDE (deactivates if active)
+        public GameObject dialoguePrefab;
+        public string dialogueText = "Default dialogue";
+        public float dialogueDuration = 3f;
+        public float nextEventDelay = 2f;
 
-        // Custom actions - drag ANY function here!
         [Header("Custom Actions")]
-        public UnityEvent onEventStart;     // Runs when event begins
-        public UnityEvent onDialogueShow;   // Runs when dialogue spawns  
-        public UnityEvent onEventEnd;       // Runs before next event
+        public UnityEvent onEventStart;
+        public UnityEvent onDialogueShow;
+        public UnityEvent onEventEnd;
     }
 
-    [Header("Characters")]
-    public GameObject[] allCharacters;     // Optional: All possible characters (not used directly)
+    [Header("Master Object List")]
+    [Tooltip("ALL objects that get shown/hidden - DISABLED BY DEFAULT at start")]
+    public GameObject[] allManagedObjects;  // Master list - auto-disabled on Start
 
     [Header("Dialogue Parent")]
-    public Transform dialogueParent;       // Canvas child where dialogue prefabs spawn
+    public Transform dialogueParent;
 
     [Header("Story Events")]
-    public StoryEvent[] events;            // Array of events - plays sequentially
+    public StoryEvent[] events;
 
-    private int currentEventIndex = 0;     // Tracks current story position (0 to events.Length-1)
-    private List<GameObject> activeDialogues = new List<GameObject>(); // Tracks spawned dialogues
+    private int currentEventIndex = 0;
+    private List<GameObject> activeDialogues = new List<GameObject>();
+    private Dictionary<GameObject, bool> objectStates = new Dictionary<GameObject, bool>(); // Tracks states
 
-    // Kicks off the entire story sequence on scene load
     void Start()
     {
+        // DISABLE ALL managed objects at start (default hidden)
+        DisableAllObjects();
         StartCoroutine(PlayStorySequence());
     }
 
-    // Main coroutine - plays events with perfect timing, no player input needed
-    IEnumerator PlayStorySequence()
+    // NEW: Auto-disable everything from master list
+    void DisableAllObjects()
     {
-        // Loop through all events until end
-        while (currentEventIndex < events.Length)
+        foreach (GameObject obj in allManagedObjects)
         {
-            PlayEvent(events[currentEventIndex]);  // Execute single event
-            // Wait total time: dialogue display + pause before next
-            yield return new WaitForSeconds(events[currentEventIndex].dialogueDuration + events[currentEventIndex].nextEventDelay);
-            currentEventIndex++;  // Advance to next event
+            if (obj != null)
+            {
+                objectStates[obj] = obj.activeSelf;  // Remember original state
+                obj.SetActive(false);
+            }
         }
-        Debug.Log("Story complete!");  // End marker
+        Debug.Log($"Disabled {allManagedObjects.Length} managed objects");
     }
 
-    // Executes one story event: character swaps + dialogue spawn + custom actions
+    IEnumerator PlayStorySequence()
+    {
+        while (currentEventIndex < events.Length)
+        {
+            PlayEvent(events[currentEventIndex]);
+            yield return new WaitForSeconds(events[currentEventIndex].dialogueDuration + events[currentEventIndex].nextEventDelay);
+            currentEventIndex++;
+        }
+        Debug.Log("Story complete!");
+    }
+
     void PlayEvent(StoryEvent evt)
     {
-        // Run start actions FIRST (mask switch, camera zoom, etc.)
         evt.onEventStart?.Invoke();
 
-        // Activate specified characters (NPCs, player, etc.)
-        foreach (GameObject charObj in evt.showCharacters)
-            charObj.SetActive(true);
+        // SHOW specified objects (only if in master list)
+        foreach (GameObject obj in evt.showObjects)
+            SafeSetActive(obj, true);
 
-        // Deactivate specified characters
-        foreach (GameObject charObj in evt.hideCharacters)
-            charObj.SetActive(false);
+        // HIDE specified objects (only if in master list)
+        foreach (GameObject obj in evt.hideObjects)
+            SafeSetActive(obj, false);
 
-        // Spawn dialogue prefab if provided + SET CUSTOM TEXT
         if (evt.dialoguePrefab != null && dialogueParent != null)
         {
-            GameObject dialogue = Instantiate(evt.dialoguePrefab, dialogueParent); // Parent to Canvas
-
-            // Find TextMeshPro child and set event-specific text
+            GameObject dialogue = Instantiate(evt.dialoguePrefab, dialogueParent);
             TextMeshProUGUI textComp = dialogue.GetComponentInChildren<TextMeshProUGUI>();
             if (textComp != null)
                 textComp.text = evt.dialogueText;
             else
                 Debug.LogWarning("No TextMeshProUGUI found in dialogue prefab!");
 
-            // Run dialogue-specific actions (sound, effects)
             evt.onDialogueShow?.Invoke();
-
-            activeDialogues.Add(dialogue);  // Track for potential cleanup
-            Destroy(dialogue, evt.dialogueDuration);  // Auto-destroy after duration
+            activeDialogues.Add(dialogue);
+            Destroy(dialogue, evt.dialogueDuration);
         }
 
-        // Run end actions BEFORE timing (cleanup, transitions)
         evt.onEventEnd?.Invoke();
+    }
+
+    // Safely toggle - only affects master list objects
+    void SafeSetActive(GameObject obj, bool active)
+    {
+        if (obj == null || !System.Array.Exists(allManagedObjects, x => x == obj))
+        {
+            Debug.LogWarning($"Object {obj?.name} not in master list - ignored");
+            return;
+        }
+
+        if (objectStates.ContainsKey(obj))
+        {
+            objectStates[obj] = active;
+            obj.SetActive(active);
+        }
+    }
+
+    // Optional: Restore original states at end
+    public void ResetAllObjects()
+    {
+        foreach (var kvp in objectStates)
+            kvp.Key.SetActive(kvp.Value);
     }
 }
