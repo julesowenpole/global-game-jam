@@ -32,9 +32,13 @@ public class StoryManager : MonoBehaviour
 
         public bool startPatrolOnEvent;
 
+        [Header("Timer")]
+        public CanvasTimer timer;  // Drag TimerManager GameObject
+        public float timerDuration = 30f;  // Seconds to countdown
+        public bool startTimerOnEvent;  // Auto-start timer on event
+
         [Header("Custom Actions")]
         public UnityEvent onEventStart;
-        public UnityEvent onDialogueShow;
         public UnityEvent onEventEnd;
     }
 
@@ -58,14 +62,29 @@ public class StoryManager : MonoBehaviour
             StoryEvent evt = events[currentEventIndex];
             PlayEvent(evt);
 
-            yield return new WaitForSeconds(evt.dialogueDuration + evt.nextEventDelay);
+            // Dynamic wait: dialogue + optional timer + delay
+            yield return StartCoroutine(WaitForEventComplete(evt));
 
-            StopEventPatrols(evt);   // 🔥 STOP AFTER EVENT
+            StopEventPatrols(evt);
             currentEventIndex++;
         }
 
-        StopAllPatrols();           // 🔥 STOP AFTER STORY
+        StopAllPatrols();
         Debug.Log("Story complete!");
+    }
+
+    IEnumerator WaitForEventComplete(StoryEvent evt)
+    {
+        yield return new WaitForSeconds(evt.dialogueDuration);
+
+        // Wait for timer if started
+        if (evt.startTimerOnEvent && evt.timer)
+        {
+            while (evt.timer.timerIsRunning && evt.timer.timeRemaining > 0)
+                yield return null;
+        }
+
+        yield return new WaitForSeconds(evt.nextEventDelay);
     }
 
     void PlayEvent(StoryEvent evt)
@@ -89,6 +108,13 @@ public class StoryManager : MonoBehaviour
             var dialogue = Instantiate(evt.dialoguePrefab, dialogueParent);
             dialogue.GetComponentInChildren<TextMeshProUGUI>().text = evt.dialogueText;
             Destroy(dialogue, evt.dialogueDuration);
+        }
+
+        // Timer control
+        if (evt.startTimerOnEvent && evt.timer)
+        {
+            evt.timer.timeRemaining = evt.timerDuration;
+            evt.timer.timerIsRunning = true;
         }
 
         evt.onEventEnd?.Invoke();
