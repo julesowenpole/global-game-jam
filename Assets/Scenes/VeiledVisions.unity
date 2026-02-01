@@ -5398,7 +5398,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryManager
   allCharacters: []
   dialogueParent: {fileID: 0}
-  events: []
+  events:
+  - eventName: 
+    showCharacters: []
+    hideCharacters: []
+    dialoguePrefab: {fileID: 0}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1236235876
 Transform:
   m_ObjectHideFlags: 0
