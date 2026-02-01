@@ -1786,6 +1786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
   target: {fileID: 877530008}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &550450440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,13 +2815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoPatrolMovement
-  speed: 5
-  pointA: {x: -29.59, y: -13.39}
-  pointB: {x: 5, y: 0}
-  spriteUp: {fileID: 0}
-  spriteDown: {fileID: 0}
-  spriteLeft: {fileID: 0}
-  spriteRight: {fileID: 0}
+  speed: 8
+  baseSprite: {fileID: 6307484090092016969, guid: 416a910ec8c7a604d83f0cf76a0ffa7a, type: 3}
   wobbleAngle: 3
   wobbleSpeed: 4
 --- !u!61 &625441453
@@ -2936,7 +2933,7 @@ Transform:
   m_GameObject: {fileID: 625441450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.59, y: -13.39, z: 0}
+  m_LocalPosition: {x: -29.59, y: -9.55, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.22925998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4087,6 +4084,7 @@ GameObject:
   - component: {fileID: 877530005}
   - component: {fileID: 877530004}
   - component: {fileID: 877530009}
+  - component: {fileID: 877530010}
   m_Layer: 0
   m_Name: Player_Controllable
   m_TagString: Player
@@ -4254,7 +4252,7 @@ Transform:
   m_GameObject: {fileID: 877530003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.68, y: -3.82, z: 0}
+  m_LocalPosition: {x: -26.4, y: -2.67, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4274,6 +4272,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMask
   currentMask: 0
   borderController: {fileID: 1172602766}
+--- !u!114 &877530010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877530003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolController
+  speed: 5
+  baseSprite: {fileID: 0}
+  wobbleAngle: 3
+  wobbleSpeed: 4
 --- !u!1 &882997241
 GameObject:
   m_ObjectHideFlags: 0
@@ -5449,6 +5463,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709158814}
+    - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1402762043}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8143224641611047240, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
@@ -5587,16 +5604,177 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74687610cedde430bac9bdd1aeb61adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryManager
-  allCharacters: []
-  dialogueParent: {fileID: 0}
+  allManagedObjects:
+  - {fileID: 877530003}
+  - {fileID: 625441450}
+  - {fileID: 1343040320}
+  - {fileID: 1412438758}
+  - {fileID: 12780207}
+  - {fileID: 505359162}
+  - {fileID: 694364463}
+  - {fileID: 1370071268}
+  dialogueParent: {fileID: 1402762043}
   events:
+  - eventName: Walk-in Intro
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Hello! Welcome to our absolutely-not-a-cult, extremely normal
+      club, the Magicians And Sorcerers Klub! '
+    dialogueDuration: 4
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1343040324}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Mask Intro
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Here, take this mask. It doesn''t do much now, but after your
+      initiation, it will gain powers! You can use these powers every time you wear
+      the mask. Go ahead, try it on! '
+    dialogueDuration: 6
+    nextEventDelay: 8
+    patrolObject1: {fileID: 625441452}
+    patrolPointA1: {x: -30, y: -5}
+    patrolPointB1: {x: -30, y: 0}
+    patrolObject2: {fileID: 1343040321}
+    patrolPointA2: {x: -27, y: -5}
+    patrolPointB2: {x: -27, y: 0}
+    startPatrolOnEvent: 1
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Put on Mask
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Good, good. I'm glad it's working...
+    dialogueDuration: 3
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 641720623}
+          m_TargetAssemblyTypeName: MaskManager, Assembly-CSharp
+          m_MethodName: EquipMask
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
   - eventName: 
-    showCharacters: []
-    hideCharacters: []
+    showObjects: []
+    hideObjects: []
     dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
     dialogueText: Default dialogue
     dialogueDuration: 0
     nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: 
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Default dialogue
+    dialogueDuration: 0
+    nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -6067,13 +6245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoPatrolMovement
-  speed: 5
-  pointA: {x: -28.27, y: -13.4}
-  pointB: {x: 5, y: 0}
-  spriteUp: {fileID: 0}
-  spriteDown: {fileID: 0}
-  spriteLeft: {fileID: 0}
-  spriteRight: {fileID: 0}
+  speed: 8
+  baseSprite: {fileID: -5459632842594515034, guid: 9a70938fb1a43774dab5417b6ef0ebad, type: 3}
   wobbleAngle: 3
   wobbleSpeed: 4
 --- !u!61 &1343040322
@@ -6190,7 +6363,7 @@ Transform:
   m_GameObject: {fileID: 1343040320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.27, y: -13.4, z: 0}
+  m_LocalPosition: {x: -28.27, y: -9.51, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.22925998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6361,6 +6534,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1884171761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1402762042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402762043}
+  - component: {fileID: 1402762045}
+  - component: {fileID: 1402762044}
+  m_Layer: 5
+  m_Name: DialogueContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1402762043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172602770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1402762044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1402762045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402762042}
+  m_CullTransparentMesh: 1
 --- !u!1 &1412438758
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,6 +7426,159 @@ Transform:
   - {fileID: 1327640853}
   - {fileID: 829117653}
   m_Father: {fileID: 579414105}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1633493410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1633493414}
+  - component: {fileID: 1633493413}
+  - component: {fileID: 1633493412}
+  - component: {fileID: 1633493411}
+  m_Layer: 0
+  m_Name: chicken_mask_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1633493411
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633493410}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.51, y: 0.86}
+    newSize: {x: 1.51, y: 0.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.51, y: 0.86}
+  m_EdgeRadius: 0
+--- !u!114 &1633493412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633493410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6dfd5cdeb3a438d81adcf545da61be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaskPickup
+  maskManager: {fileID: 0}
+  maskId: 3
+--- !u!212 &1633493413
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633493410}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -6283126614537423696, guid: 083512b9625d7234da6518be99011316, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.51, y: 0.86}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &1633493414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633493410}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -20.54, y: -2.65534, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640347176
 GameObject:
@@ -9121,6 +9522,7 @@ SceneRoots:
   - {fileID: 1234473342}
   - {fileID: 1236235876}
   - {fileID: 575237028}
+  - {fileID: 1633493414}
   - {fileID: 641720624}
   - {fileID: 1884171761}
   - {fileID: 1190835910}

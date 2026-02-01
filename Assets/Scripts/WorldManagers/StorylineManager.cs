@@ -2,96 +2,123 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.Events;  // Custom actions support
+using UnityEngine.Events;
+using System.Linq;
 
-// Manages timed story sequences - toggles characters, spawns dialogue with custom text, runs game actions
 public class StoryManager : MonoBehaviour
 {
-    // Serializable class for Inspector-editable story events
     [System.Serializable]
     public class StoryEvent
     {
-        public string eventName;           // Debug label for events
-        public GameObject[] showCharacters; // Characters to activate (SetActive(true))
-        public GameObject[] hideCharacters; // Characters to deactivate (SetActive(false))
-        public GameObject dialoguePrefab;   // UI prefab to spawn (null = skip)
-        public string dialogueText = "Default dialogue";  // Custom text per event
-        public float dialogueDuration = 3f; // How long dialogue stays visible
-        public float nextEventDelay = 2f;   // Pause AFTER dialogue before next event
+        public string eventName;
 
-        // Custom actions - drag ANY function here!
+        public GameObject[] showObjects;
+        public GameObject[] hideObjects;
+
+        public GameObject dialoguePrefab;
+        public string dialogueText;
+        public float dialogueDuration = 3f;
+        public float nextEventDelay = 2f;
+
+        [Header("Patrol Object 1")]
+        public PatrolController patrolObject1;
+        public Vector2 patrolPointA1;
+        public Vector2 patrolPointB1;
+
+        [Header("Patrol Object 2")]
+        public PatrolController patrolObject2;
+        public Vector2 patrolPointA2;
+        public Vector2 patrolPointB2;
+
+        public bool startPatrolOnEvent;
+
         [Header("Custom Actions")]
-        public UnityEvent onEventStart;     // Runs when event begins
-        public UnityEvent onDialogueShow;   // Runs when dialogue spawns  
-        public UnityEvent onEventEnd;       // Runs before next event
+        public UnityEvent onEventStart;
+        public UnityEvent onDialogueShow;
+        public UnityEvent onEventEnd;
     }
 
-    [Header("Characters")]
-    public GameObject[] allCharacters;     // Optional: All possible characters (not used directly)
+    public GameObject[] allManagedObjects;
+    public Transform dialogueParent;
+    public StoryEvent[] events;
 
-    [Header("Dialogue Parent")]
-    public Transform dialogueParent;       // Canvas child where dialogue prefabs spawn
+    private int currentEventIndex;
+    private Dictionary<GameObject, bool> objectStates = new();
 
-    [Header("Story Events")]
-    public StoryEvent[] events;            // Array of events - plays sequentially
-
-    private int currentEventIndex = 0;     // Tracks current story position (0 to events.Length-1)
-    private List<GameObject> activeDialogues = new List<GameObject>(); // Tracks spawned dialogues
-
-    // Kicks off the entire story sequence on scene load
     void Start()
     {
+        DisableAllObjects();
         StartCoroutine(PlayStorySequence());
     }
 
-    // Main coroutine - plays events with perfect timing, no player input needed
     IEnumerator PlayStorySequence()
     {
-        // Loop through all events until end
         while (currentEventIndex < events.Length)
         {
-            PlayEvent(events[currentEventIndex]);  // Execute single event
-            // Wait total time: dialogue display + pause before next
-            yield return new WaitForSeconds(events[currentEventIndex].dialogueDuration + events[currentEventIndex].nextEventDelay);
-            currentEventIndex++;  // Advance to next event
+            StoryEvent evt = events[currentEventIndex];
+            PlayEvent(evt);
+
+            yield return new WaitForSeconds(evt.dialogueDuration + evt.nextEventDelay);
+
+            StopEventPatrols(evt);   // 🔥 STOP AFTER EVENT
+            currentEventIndex++;
         }
-        Debug.Log("Story complete!");  // End marker
+
+        StopAllPatrols();           // 🔥 STOP AFTER STORY
+        Debug.Log("Story complete!");
     }
 
-    // Executes one story event: character swaps + dialogue spawn + custom actions
     void PlayEvent(StoryEvent evt)
     {
-        // Run start actions FIRST (mask switch, camera zoom, etc.)
         evt.onEventStart?.Invoke();
 
-        // Activate specified characters (NPCs, player, etc.)
-        foreach (GameObject charObj in evt.showCharacters)
-            charObj.SetActive(true);
+        foreach (var obj in evt.showObjects)
+            SafeSetActive(obj, true);
 
-        // Deactivate specified characters
-        foreach (GameObject charObj in evt.hideCharacters)
-            charObj.SetActive(false);
+        foreach (var obj in evt.hideObjects)
+            SafeSetActive(obj, false);
 
-        // Spawn dialogue prefab if provided + SET CUSTOM TEXT
-        if (evt.dialoguePrefab != null && dialogueParent != null)
+        if (evt.startPatrolOnEvent)
         {
-            GameObject dialogue = Instantiate(evt.dialoguePrefab, dialogueParent); // Parent to Canvas
-
-            // Find TextMeshPro child and set event-specific text
-            TextMeshProUGUI textComp = dialogue.GetComponentInChildren<TextMeshProUGUI>();
-            if (textComp != null)
-                textComp.text = evt.dialogueText;
-            else
-                Debug.LogWarning("No TextMeshProUGUI found in dialogue prefab!");
-
-            // Run dialogue-specific actions (sound, effects)
-            evt.onDialogueShow?.Invoke();
-
-            activeDialogues.Add(dialogue);  // Track for potential cleanup
-            Destroy(dialogue, evt.dialogueDuration);  // Auto-destroy after duration
+            evt.patrolObject1?.StartPatrol(evt.patrolPointA1, evt.patrolPointB1);
+            evt.patrolObject2?.StartPatrol(evt.patrolPointA2, evt.patrolPointB2);
         }
 
-        // Run end actions BEFORE timing (cleanup, transitions)
+        if (evt.dialoguePrefab && dialogueParent)
+        {
+            var dialogue = Instantiate(evt.dialoguePrefab, dialogueParent);
+            dialogue.GetComponentInChildren<TextMeshProUGUI>().text = evt.dialogueText;
+            Destroy(dialogue, evt.dialogueDuration);
+        }
+
         evt.onEventEnd?.Invoke();
+    }
+
+    void StopEventPatrols(StoryEvent evt)
+    {
+        evt.patrolObject1?.StopPatrol();
+        evt.patrolObject2?.StopPatrol();
+    }
+
+    void StopAllPatrols()
+    {
+        foreach (var evt in events)
+            StopEventPatrols(evt);
+    }
+
+    void DisableAllObjects()
+    {
+        foreach (var obj in allManagedObjects)
+        {
+            objectStates[obj] = obj.activeSelf;
+            obj.SetActive(false);
+        }
+    }
+
+    void SafeSetActive(GameObject obj, bool active)
+    {
+        if (!obj || !objectStates.ContainsKey(obj)) return;
+        obj.SetActive(active);
+        objectStates[obj] = active;
     }
 }
