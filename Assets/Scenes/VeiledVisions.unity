@@ -6641,7 +6641,7 @@ MonoBehaviour:
     teleportObject: {fileID: 0}
     teleportOnEvent: 0
     nextSceneName: 
-    nextSceneIndex: 1
+    nextSceneIndex: 2
     loadOnEventEnd: 1
     onEventStart:
       m_PersistentCalls:
