@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c1c80ecabc38d20469bf7f4338ecb8aa
+guid: a4a92957b3779734ea0a03eb80cf4dec
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Dumbledor 1
+  - Magic School One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

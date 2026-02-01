@@ -483,8 +483,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 625013ec863b4b7499f8654897df030c, type: 2}
-  m_sharedMaterial: {fileID: 1165297376397568740, guid: 625013ec863b4b7499f8654897df030c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
+  m_sharedMaterial: {fileID: -2777113779603958059, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -664,8 +664,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Welcome to the The Magicians and Sorcerer's Klub (M.A.S.K.)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 625013ec863b4b7499f8654897df030c, type: 2}
-  m_sharedMaterial: {fileID: 1165297376397568740, guid: 625013ec863b4b7499f8654897df030c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
+  m_sharedMaterial: {fileID: -2777113779603958059, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1137,8 +1137,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 625013ec863b4b7499f8654897df030c, type: 2}
-  m_sharedMaterial: {fileID: 1165297376397568740, guid: 625013ec863b4b7499f8654897df030c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
+  m_sharedMaterial: {fileID: -2777113779603958059, guid: 1a193f05d8b5e3d419b923682f205a10, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
