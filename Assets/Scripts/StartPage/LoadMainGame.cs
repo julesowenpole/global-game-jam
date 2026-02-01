@@ -12,6 +12,7 @@ public class LoadMainGame : MonoBehaviour
 
     public void LoadNextScene()
     {
+        Debug.Log("load scene");
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentIndex + 1);
     }
