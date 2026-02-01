@@ -1,11 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MaskManager : MonoBehaviour
 {
     [SerializeField] public bool[] masksFound = new bool[4];
 
     [Header("Current Mask")]
-    [SerializeField] private int currentMaskId = -1;  // ALWAYS 0-3 equipped
+    [SerializeField] private int currentMaskId = -1;  // -1=none, 0-3 equipped
+
+    [Header("Mask Sprites (Drag THIS object's Image/SpriteRenderer here)")]
+    public Image maskImage;     // Single UI Image on this GameObject (if UI)
+    public SpriteRenderer maskSpriteRenderer;  // OR SpriteRenderer on this GameObject (if world sprite)
+
+    [Header("Mask Textures (Drag sprites 0-3 here)")]
+    public Sprite[] maskTextures = new Sprite[4];
 
     public bool IsMaskFound(int id)
     {
@@ -15,41 +23,85 @@ public class MaskManager : MonoBehaviour
     public void SetMaskFound(int id, bool found)
     {
         if (id >= 0 && id < 4) masksFound[id] = found;
+        UpdateDisplay();
     }
 
-    // Get equipped mask ID (always 0-3)
     public int GetCurrentMaskId() => currentMaskId;
 
-    // Cycle to next found mask (wraps around 0-3)
     public void NextMask()
     {
         int start = currentMaskId;
         do
         {
             currentMaskId = (currentMaskId + 1) % 4;
-        } while (!masksFound[currentMaskId] && currentMaskId != start);
-
+        } while (!IsMaskFound(currentMaskId) && currentMaskId != start);
+        UpdateDisplay();
         Debug.Log($"Switched to mask {currentMaskId}");
     }
 
-    // Previous mask (reverse cycle)
     public void PreviousMask()
     {
         int start = currentMaskId;
         do
         {
-            currentMaskId = (currentMaskId + 3) % 4; // -1 mod 4
-        } while (!masksFound[currentMaskId] && currentMaskId != start);
-
+            currentMaskId = (currentMaskId + 3) % 4;
+        } while (!IsMaskFound(currentMaskId) && currentMaskId != start);
+        UpdateDisplay();
         Debug.Log($"Switched to mask {currentMaskId}");
     }
 
-    // Force equip specific mask (if found)
     public void EquipMask(int id)
     {
-        if (id >= 0 && id < 4 && masksFound[id])
+        if (id >= 0 && id < 4 && IsMaskFound(id))
         {
             currentMaskId = id;
+            UpdateDisplay();
+            Debug.Log($"Equipped mask {id}");
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H) && IsMaskFound(0)) EquipMask(0);
+        if (Input.GetKeyDown(KeyCode.J) && IsMaskFound(1)) EquipMask(1);
+        if (Input.GetKeyDown(KeyCode.K) && IsMaskFound(2)) EquipMask(2);
+        if (Input.GetKeyDown(KeyCode.L) && IsMaskFound(3)) EquipMask(3);
+    }
+
+    void Start()
+    {
+        UpdateDisplay();
+    }
+
+    void UpdateDisplay()
+    {
+        // Handle UI Image on this GameObject
+        if (maskImage != null)
+        {
+            if (currentMaskId >= 0 && IsMaskFound(currentMaskId))
+            {
+                maskImage.enabled = true;
+                maskImage.sprite = maskTextures[currentMaskId];
+                maskImage.color = Color.white;
+            }
+            else
+            {
+                maskImage.enabled = false;
+            }
+        }
+
+        // Handle SpriteRenderer on this GameObject (non-UI)
+        if (maskSpriteRenderer != null)
+        {
+            if (currentMaskId >= 0 && IsMaskFound(currentMaskId))
+            {
+                maskSpriteRenderer.enabled = true;
+                maskSpriteRenderer.sprite = maskTextures[currentMaskId];
+            }
+            else
+            {
+                maskSpriteRenderer.enabled = false;
+            }
         }
     }
 }

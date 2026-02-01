@@ -5116,6 +5116,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaskManager
   masksFound: 0000000000
   currentMaskId: 0
+  maskImage: {fileID: 1709158815}
+  maskSpriteRenderer: {fileID: 1709158817}
+  maskTextures:
+  - {fileID: -6283126614537423696, guid: 083512b9625d7234da6518be99011316, type: 3}
+  - {fileID: 7808720348575651509, guid: ef357e786457a4ede9b86df489ee8480, type: 3}
+  - {fileID: 8582933961004965399, guid: 3824b120b73575f418c7f65e3cae1a35, type: 3}
+  - {fileID: -4775269378287215232, guid: 26c42854dbf9fb044aba157e4d29c203, type: 3}
 --- !u!4 &641720624
 Transform:
   m_ObjectHideFlags: 0
@@ -8637,7 +8644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1163205866
 Transform:
   m_ObjectHideFlags: 0
@@ -9063,7 +9070,19 @@ MonoBehaviour:
         m_Calls: []
     onEventEnd:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 641720623}
+          m_TargetAssemblyTypeName: MaskManager, Assembly-CSharp
+          m_MethodName: EquipMask
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventName: Put on Mask
     showObjects:
     - {fileID: 625441450}
