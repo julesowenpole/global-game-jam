@@ -2880,6 +2880,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -2917,6 +2922,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -2942,6 +2952,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -2980,6 +2995,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -3017,6 +3037,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -3060,6 +3085,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -3115,6 +3145,11 @@ MonoBehaviour:
     timer: {fileID: 2140070711}
     timerDuration: 300
     startTimerOnEvent: 1
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6176,6 +6211,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6213,6 +6253,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -6238,6 +6283,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6276,6 +6326,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -6313,6 +6368,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -6356,6 +6416,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 30
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6400,7 +6465,7 @@ MonoBehaviour:
       all knew Masky too well, it would just be too depressing if we did it... and
       it eliminates any biases we might have. '
     dialogueDuration: 4
-    nextEventDelay: 5
+    nextEventDelay: 10
     patrolObject1: {fileID: 0}
     patrolPointA1: {x: -5, y: 0}
     patrolPointB1: {x: 5, y: 0}
@@ -6409,8 +6474,13 @@ MonoBehaviour:
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
     timer: {fileID: 2140070711}
-    timerDuration: 300
+    timerDuration: 10
     startTimerOnEvent: 1
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6465,6 +6535,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 0
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6519,6 +6594,11 @@ MonoBehaviour:
     timer: {fileID: 0}
     timerDuration: 0
     startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6527,13 +6607,45 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: -6283126614537423696, guid: 083512b9625d7234da6518be99011316, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: End Credits
+    showObjects: []
+    hideObjects:
+    - {fileID: 877530003}
+    - {fileID: 625441450}
+    - {fileID: 1884171760}
+    - {fileID: 1343040320}
+    dialoguePrefab: {fileID: 0}
+    dialogueText: 
+    dialogueDuration: 0
+    nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 0
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: 1
+    loadOnEventEnd: 1
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
     onEventEnd:
       m_PersistentCalls:
         m_Calls: []
