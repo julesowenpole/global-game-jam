@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;  // Added for scene loading
 using System.Linq;
 
 public class StoryManager : MonoBehaviour
@@ -32,9 +33,22 @@ public class StoryManager : MonoBehaviour
 
         public bool startPatrolOnEvent;
 
+        [Header("Timer")]
+        public CanvasTimer timer;
+        public float timerDuration = 30f;
+        public bool startTimerOnEvent;
+
+        [Header("Teleport")]
+        public TeleportController teleportObject;
+        public bool teleportOnEvent;
+
+        [Header("Scene Transition")]
+        public string nextSceneName;  // e.g., "VictoryScene"
+        public int nextSceneIndex = -1;  // Build index, or -1 for none
+        public bool loadOnEventEnd;
+
         [Header("Custom Actions")]
         public UnityEvent onEventStart;
-        public UnityEvent onDialogueShow;
         public UnityEvent onEventEnd;
     }
 
@@ -58,14 +72,28 @@ public class StoryManager : MonoBehaviour
             StoryEvent evt = events[currentEventIndex];
             PlayEvent(evt);
 
-            yield return new WaitForSeconds(evt.dialogueDuration + evt.nextEventDelay);
+            yield return StartCoroutine(WaitForEventComplete(evt));
 
-            StopEventPatrols(evt);   // 🔥 STOP AFTER EVENT
+            StopEventPatrols(evt);
             currentEventIndex++;
         }
 
-        StopAllPatrols();           // 🔥 STOP AFTER STORY
+        // Story complete - handle endings or default next scene
         Debug.Log("Story complete!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator WaitForEventComplete(StoryEvent evt)
+    {
+        yield return new WaitForSeconds(evt.dialogueDuration);
+        
+        if (evt.startTimerOnEvent && evt.timer)
+        {
+            while (evt.timer.timerIsRunning && evt.timer.timeRemaining > 0)
+                yield return null;
+        }
+        
+        yield return new WaitForSeconds(evt.nextEventDelay);
     }
 
     void PlayEvent(StoryEvent evt)
@@ -91,7 +119,35 @@ public class StoryManager : MonoBehaviour
             Destroy(dialogue, evt.dialogueDuration);
         }
 
+        if (evt.startTimerOnEvent && evt.timer)
+        {
+            evt.timer.timeRemaining = evt.timerDuration;
+            evt.timer.timerIsRunning = true;
+        }
+
+        if (evt.teleportOnEvent && evt.teleportObject)
+        {
+            evt.teleportObject.Teleport();
+        }
+
         evt.onEventEnd?.Invoke();
+
+        // Scene transition
+        if (evt.loadOnEventEnd)
+        {
+            if (!string.IsNullOrEmpty(evt.nextSceneName))
+            {
+                SceneManager.LoadScene(evt.nextSceneName);
+            }
+            else if (evt.nextSceneIndex >= 0)
+            {
+                SceneManager.LoadScene(evt.nextSceneIndex);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
     }
 
     void StopEventPatrols(StoryEvent evt)

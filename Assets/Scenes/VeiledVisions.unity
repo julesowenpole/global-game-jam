@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &12780208
 SpriteRenderer:
   serializedVersion: 2
@@ -1642,7 +1642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &505359163
 SpriteRenderer:
   serializedVersion: 2
@@ -2054,6 +2054,143 @@ Transform:
   m_Children: []
   m_Father: {fileID: 138636412}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &551152076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551152079}
+  - component: {fileID: 551152078}
+  - component: {fileID: 551152077}
+  m_Layer: 5
+  m_Name: TimeText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &551152077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551152076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 5:00
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 286c371b5dbff904189576064b565cd9, type: 2}
+  m_sharedMaterial: {fileID: -3925891953891286036, guid: 286c371b5dbff904189576064b565cd9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &551152078
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551152076}
+  m_CullTransparentMesh: 1
+--- !u!224 &551152079
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551152076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172602770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 298.7407, y: 151}
+  m_SizeDelta: {x: 80.7779, y: 39.4025}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &571521726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2811,6 +2948,381 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &617452387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 617452389}
+  - component: {fileID: 617452388}
+  m_Layer: 0
+  m_Name: StoryManager2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &617452388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617452387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74687610cedde430bac9bdd1aeb61adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryManager
+  allManagedObjects:
+  - {fileID: 877530003}
+  - {fileID: 625441450}
+  - {fileID: 1343040320}
+  - {fileID: 1412438758}
+  - {fileID: 12780207}
+  - {fileID: 505359162}
+  - {fileID: 694364463}
+  - {fileID: 1370071268}
+  dialogueParent: {fileID: 1402762043}
+  events:
+  - eventName: Walk-in Intro
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Hello! Welcome to our absolutely-not-a-cult, extremely normal
+      club, the Magicians And Sorcerers Klub! '
+    dialogueDuration: 4
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1343040324}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Mask Intro
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Here, take this mask. It doesn''t do much now, but after your
+      initiation, it will gain powers! You can use these powers every time you wear
+      the mask. Go ahead, try it on! '
+    dialogueDuration: 6
+    nextEventDelay: 8
+    patrolObject1: {fileID: 625441452}
+    patrolPointA1: {x: -30, y: -5}
+    patrolPointB1: {x: -30, y: 0}
+    patrolObject2: {fileID: 1343040321}
+    patrolPointA2: {x: -27, y: -5}
+    patrolPointB2: {x: -27, y: 0}
+    startPatrolOnEvent: 1
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Put on Mask
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Good, good. I'm glad it's working...
+    dialogueDuration: 3
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 641720623}
+          m_TargetAssemblyTypeName: MaskManager, Assembly-CSharp
+          m_MethodName: EquipMask
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Ask bathroom
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: "Oh, what's that? You need to use the bathroom? Okay, just be quick...
+      wouldn't want anything awful to happen while you were gone! Haha\u2026"
+    dialogueDuration: 3
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 898749971}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventName: Go bathroom
+    showObjects: []
+    hideObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Pepper: *SCREAM!* Paprika: OH! OH NO!! '
+    dialogueDuration: 3
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 877530008}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: Leader Dead
+    showObjects:
+    - {fileID: 877530003}
+    - {fileID: 1412438758}
+    - {fileID: 12780207}
+    - {fileID: 505359162}
+    - {fileID: 694364463}
+    - {fileID: 1370071268}
+    hideObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: '*The leader lies dead...*'
+    dialogueDuration: 2
+    nextEventDelay: 3
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1370071271}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 898749971}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Start Main Gameplay
+    showObjects:
+    - {fileID: 877530003}
+    - {fileID: 1412438758}
+    - {fileID: 12780207}
+    - {fileID: 505359162}
+    - {fileID: 694364463}
+    - {fileID: 1370071268}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Turmeric: Player, it has to be you who solves this murder! We
+      all knew Masky too well, it would just be too depressing if we did it... and
+      it eliminates any biases we might have. '
+    dialogueDuration: 4
+    nextEventDelay: 5
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 2140070711}
+    timerDuration: 300
+    startTimerOnEvent: 1
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 877530008}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 617452387}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!4 &617452389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617452387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.84261, y: 0.00967, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3205,7 +3717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &694364464
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5652,6 +6164,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1402762043}
+    - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 551152079}
+    - targetCorrespondingSourceObject: {fileID: 707168856840436143, guid: 9eebf9499309b454892436b1543fbace, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2140070710}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8143224641611047240, guid: 9eebf9499309b454892436b1543fbace, type: 3}
       insertIndex: -1
@@ -5819,6 +6337,14 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -5834,9 +6360,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
     onEventEnd:
       m_PersistentCalls:
         m_Calls: []
@@ -5857,10 +6380,15 @@ MonoBehaviour:
     patrolPointA2: {x: -27, y: -5}
     patrolPointB2: {x: -27, y: 0}
     startPatrolOnEvent: 1
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueShow:
       m_PersistentCalls:
         m_Calls: []
     onEventEnd:
@@ -5882,6 +6410,14 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -5897,9 +6433,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
     onEventEnd:
       m_PersistentCalls:
         m_Calls: []
@@ -5920,10 +6453,15 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueShow:
       m_PersistentCalls:
         m_Calls: []
     onEventEnd:
@@ -5957,10 +6495,15 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueShow:
       m_PersistentCalls:
         m_Calls: []
     onEventEnd:
@@ -6000,6 +6543,14 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 30
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6027,9 +6578,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
     onEventEnd:
       m_PersistentCalls:
         m_Calls: []
@@ -6047,7 +6595,7 @@ MonoBehaviour:
       all knew Masky too well, it would just be too depressing if we did it... and
       it eliminates any biases we might have. '
     dialogueDuration: 4
-    nextEventDelay: 5
+    nextEventDelay: 10
     patrolObject1: {fileID: 0}
     patrolPointA1: {x: -5, y: 0}
     patrolPointB1: {x: 5, y: 0}
@@ -6055,6 +6603,14 @@ MonoBehaviour:
     patrolPointA2: {x: 0, y: 5}
     patrolPointB2: {x: 0, y: -5}
     startPatrolOnEvent: 0
+    timer: {fileID: 2140070711}
+    timerDuration: 10
+    startTimerOnEvent: 1
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
@@ -6070,13 +6626,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
-    onEventEnd:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1236235874}
+        - m_Target: {fileID: 551152076}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -6086,8 +6636,149 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: PlayerFailed
+    showObjects:
+    - {fileID: 1343040320}
+    - {fileID: 1412438758}
+    - {fileID: 12780207}
+    - {fileID: 505359162}
+    - {fileID: 694364463}
+    - {fileID: 1370071268}
+    hideObjects:
+    - {fileID: 877530003}
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Everyone: "YOU HAVE FAILED! For all we know, you could be an imposter!"'
+    dialogueDuration: 4
+    nextEventDelay: 5
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 0
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1343040326}
+          m_TargetAssemblyTypeName: TeleportController, Assembly-CSharp
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1343040326}
+          m_TargetAssemblyTypeName: TeleportController, Assembly-CSharp
+          m_MethodName: Teleport
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Turn into Chicken
+    showObjects:
+    - {fileID: 1343040320}
+    - {fileID: 1412438758}
+    - {fileID: 12780207}
+    - {fileID: 505359162}
+    - {fileID: 694364463}
+    - {fileID: 1370071268}
+    hideObjects:
+    - {fileID: 877530003}
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: We're turning you into a chicken!
+    dialogueDuration: 4
+    nextEventDelay: 5
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 0
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: -1
+    loadOnEventEnd: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1343040323}
+          m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+          m_MethodName: set_sprite
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: -6283126614537423696, guid: 083512b9625d7234da6518be99011316, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: End Credits
+    showObjects: []
+    hideObjects:
+    - {fileID: 877530003}
+    - {fileID: 625441450}
+    - {fileID: 1884171760}
+    - {fileID: 1343040320}
+    dialoguePrefab: {fileID: 0}
+    dialogueText: 
+    dialogueDuration: 0
+    nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    timer: {fileID: 0}
+    timerDuration: 0
+    startTimerOnEvent: 0
+    teleportObject: {fileID: 0}
+    teleportOnEvent: 0
+    nextSceneName: 
+    nextSceneIndex: 2
+    loadOnEventEnd: 1
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1236235876
 Transform:
   m_ObjectHideFlags: 0
@@ -6530,6 +7221,7 @@ GameObject:
   - component: {fileID: 1343040322}
   - component: {fileID: 1343040321}
   - component: {fileID: 1343040325}
+  - component: {fileID: 1343040326}
   m_Layer: 0
   m_Name: Player_Auto
   m_TagString: Untagged
@@ -6701,6 +7393,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1343040326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343040320}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9b26ce7728097488fa121fb8865d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportController
+  targetPosition: {fileID: 1370520327}
+  deactivateDuringTeleport: 1
+  activationDelay: 0.01
 --- !u!1 &1370071268
 GameObject:
   m_ObjectHideFlags: 0
@@ -6718,7 +7425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1370071269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6839,6 +7546,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1884171761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1370520326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370520327}
+  m_Layer: 0
+  m_Name: TeleportAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1370520327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370520326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.4, y: -2.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1402762042
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,7 +7670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1412438759
 SpriteRenderer:
   serializedVersion: 2
@@ -9703,6 +10441,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &2140070709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2140070710}
+  - component: {fileID: 2140070711}
+  m_Layer: 5
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2140070710
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140070709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172602770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2140070711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140070709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f821b081dd87d40a7e5fd065bc06aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasTimer
+  timeRemaining: 300
+  timerIsRunning: 0
+  timerText: {fileID: 551152077}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -9715,6 +10504,7 @@ SceneRoots:
   - {fileID: 1343040324}
   - {fileID: 1234473342}
   - {fileID: 1236235876}
+  - {fileID: 617452389}
   - {fileID: 641720624}
   - {fileID: 1884171761}
   - {fileID: 1190835910}
@@ -9723,3 +10513,4 @@ SceneRoots:
   - {fileID: 1773954944}
   - {fileID: 651748148}
   - {fileID: 1816122199}
+  - {fileID: 1370520327}
