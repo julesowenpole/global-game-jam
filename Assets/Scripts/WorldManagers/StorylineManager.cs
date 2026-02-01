@@ -3,20 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Events;
+using System.Linq;
 
-// Manages timed story sequences with automatic object state management
 public class StoryManager : MonoBehaviour
 {
     [System.Serializable]
     public class StoryEvent
     {
         public string eventName;
-        public GameObject[] showObjects;     // Objects to SHOW (activates if inactive)
-        public GameObject[] hideObjects;     // Objects to HIDE (deactivates if active)
+
+        public GameObject[] showObjects;
+        public GameObject[] hideObjects;
+
         public GameObject dialoguePrefab;
-        public string dialogueText = "Default dialogue";
+        public string dialogueText;
         public float dialogueDuration = 3f;
         public float nextEventDelay = 2f;
+
+        [Header("Patrol Object 1")]
+        public PatrolController patrolObject1;
+        public Vector2 patrolPointA1;
+        public Vector2 patrolPointB1;
+
+        [Header("Patrol Object 2")]
+        public PatrolController patrolObject2;
+        public Vector2 patrolPointA2;
+        public Vector2 patrolPointB2;
+
+        public bool startPatrolOnEvent;
 
         [Header("Custom Actions")]
         public UnityEvent onEventStart;
@@ -24,49 +38,33 @@ public class StoryManager : MonoBehaviour
         public UnityEvent onEventEnd;
     }
 
-    [Header("Master Object List")]
-    [Tooltip("ALL objects that get shown/hidden - DISABLED BY DEFAULT at start")]
-    public GameObject[] allManagedObjects;  // Master list - auto-disabled on Start
-
-    [Header("Dialogue Parent")]
+    public GameObject[] allManagedObjects;
     public Transform dialogueParent;
-
-    [Header("Story Events")]
     public StoryEvent[] events;
 
-    private int currentEventIndex = 0;
-    private List<GameObject> activeDialogues = new List<GameObject>();
-    private Dictionary<GameObject, bool> objectStates = new Dictionary<GameObject, bool>(); // Tracks states
+    private int currentEventIndex;
+    private Dictionary<GameObject, bool> objectStates = new();
 
     void Start()
     {
-        // DISABLE ALL managed objects at start (default hidden)
         DisableAllObjects();
         StartCoroutine(PlayStorySequence());
-    }
-
-    // NEW: Auto-disable everything from master list
-    void DisableAllObjects()
-    {
-        foreach (GameObject obj in allManagedObjects)
-        {
-            if (obj != null)
-            {
-                objectStates[obj] = obj.activeSelf;  // Remember original state
-                obj.SetActive(false);
-            }
-        }
-        Debug.Log($"Disabled {allManagedObjects.Length} managed objects");
     }
 
     IEnumerator PlayStorySequence()
     {
         while (currentEventIndex < events.Length)
         {
-            PlayEvent(events[currentEventIndex]);
-            yield return new WaitForSeconds(events[currentEventIndex].dialogueDuration + events[currentEventIndex].nextEventDelay);
+            StoryEvent evt = events[currentEventIndex];
+            PlayEvent(evt);
+
+            yield return new WaitForSeconds(evt.dialogueDuration + evt.nextEventDelay);
+
+            StopEventPatrols(evt);   // 🔥 STOP AFTER EVENT
             currentEventIndex++;
         }
+
+        StopAllPatrols();           // 🔥 STOP AFTER STORY
         Debug.Log("Story complete!");
     }
 
@@ -74,51 +72,53 @@ public class StoryManager : MonoBehaviour
     {
         evt.onEventStart?.Invoke();
 
-        // SHOW specified objects (only if in master list)
-        foreach (GameObject obj in evt.showObjects)
+        foreach (var obj in evt.showObjects)
             SafeSetActive(obj, true);
 
-        // HIDE specified objects (only if in master list)
-        foreach (GameObject obj in evt.hideObjects)
+        foreach (var obj in evt.hideObjects)
             SafeSetActive(obj, false);
 
-        if (evt.dialoguePrefab != null && dialogueParent != null)
+        if (evt.startPatrolOnEvent)
         {
-            GameObject dialogue = Instantiate(evt.dialoguePrefab, dialogueParent);
-            TextMeshProUGUI textComp = dialogue.GetComponentInChildren<TextMeshProUGUI>();
-            if (textComp != null)
-                textComp.text = evt.dialogueText;
-            else
-                Debug.LogWarning("No TextMeshProUGUI found in dialogue prefab!");
+            evt.patrolObject1?.StartPatrol(evt.patrolPointA1, evt.patrolPointB1);
+            evt.patrolObject2?.StartPatrol(evt.patrolPointA2, evt.patrolPointB2);
+        }
 
-            evt.onDialogueShow?.Invoke();
-            activeDialogues.Add(dialogue);
+        if (evt.dialoguePrefab && dialogueParent)
+        {
+            var dialogue = Instantiate(evt.dialoguePrefab, dialogueParent);
+            dialogue.GetComponentInChildren<TextMeshProUGUI>().text = evt.dialogueText;
             Destroy(dialogue, evt.dialogueDuration);
         }
 
         evt.onEventEnd?.Invoke();
     }
 
-    // Safely toggle - only affects master list objects
-    void SafeSetActive(GameObject obj, bool active)
+    void StopEventPatrols(StoryEvent evt)
     {
-        if (obj == null || !System.Array.Exists(allManagedObjects, x => x == obj))
-        {
-            Debug.LogWarning($"Object {obj?.name} not in master list - ignored");
-            return;
-        }
+        evt.patrolObject1?.StopPatrol();
+        evt.patrolObject2?.StopPatrol();
+    }
 
-        if (objectStates.ContainsKey(obj))
+    void StopAllPatrols()
+    {
+        foreach (var evt in events)
+            StopEventPatrols(evt);
+    }
+
+    void DisableAllObjects()
+    {
+        foreach (var obj in allManagedObjects)
         {
-            objectStates[obj] = active;
-            obj.SetActive(active);
+            objectStates[obj] = obj.activeSelf;
+            obj.SetActive(false);
         }
     }
 
-    // Optional: Restore original states at end
-    public void ResetAllObjects()
+    void SafeSetActive(GameObject obj, bool active)
     {
-        foreach (var kvp in objectStates)
-            kvp.Key.SetActive(kvp.Value);
+        if (!obj || !objectStates.ContainsKey(obj)) return;
+        obj.SetActive(active);
+        objectStates[obj] = active;
     }
 }

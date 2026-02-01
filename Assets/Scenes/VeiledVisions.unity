@@ -1786,6 +1786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
   target: {fileID: 877530008}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &550450440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,13 +2815,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoPatrolMovement
-  speed: 5
-  pointA: {x: -29.59, y: -13.39}
-  pointB: {x: 5, y: 0}
-  spriteUp: {fileID: 0}
-  spriteDown: {fileID: 0}
-  spriteLeft: {fileID: 0}
-  spriteRight: {fileID: 0}
+  speed: 8
+  baseSprite: {fileID: 6307484090092016969, guid: 416a910ec8c7a604d83f0cf76a0ffa7a, type: 3}
   wobbleAngle: 3
   wobbleSpeed: 4
 --- !u!61 &625441453
@@ -4087,6 +4084,7 @@ GameObject:
   - component: {fileID: 877530005}
   - component: {fileID: 877530004}
   - component: {fileID: 877530009}
+  - component: {fileID: 877530010}
   m_Layer: 0
   m_Name: Player_Controllable
   m_TagString: Player
@@ -4254,7 +4252,7 @@ Transform:
   m_GameObject: {fileID: 877530003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.68, y: -3.82, z: 0}
+  m_LocalPosition: {x: -26.4, y: -2.67, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4274,6 +4272,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMask
   currentMask: 0
   borderController: {fileID: 1172602766}
+--- !u!114 &877530010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877530003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolController
+  speed: 5
+  baseSprite: {fileID: 0}
+  wobbleAngle: 3
+  wobbleSpeed: 4
 --- !u!1 &882997241
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,19 +5621,89 @@ MonoBehaviour:
     - {fileID: 1343040320}
     hideObjects: []
     dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
-    dialogueText: Welcome to the M.A.S.K.
-    dialogueDuration: 6
-    nextEventDelay: 10
+    dialogueText: 'Hello! Welcome to our absolutely-not-a-cult, extremely normal
+      club, the Magicians And Sorcerers Klub! '
+    dialogueDuration: 4
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 625441450}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 0
+        - m_Target: {fileID: 519420033}
+          m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+          m_MethodName: FollowTarget
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1343040324}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Mask Intro
+    showObjects: []
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: 'Here, take this mask. It doesn''t do much now, but after your
+      initiation, it will gain powers! You can use these powers every time you wear
+      the mask. Go ahead, try it on! '
+    dialogueDuration: 6
+    nextEventDelay: 8
+    patrolObject1: {fileID: 625441452}
+    patrolPointA1: {x: -30, y: -5}
+    patrolPointB1: {x: -30, y: 0}
+    patrolObject2: {fileID: 1343040321}
+    patrolPointA2: {x: -27, y: -5}
+    patrolPointB2: {x: -27, y: 0}
+    startPatrolOnEvent: 1
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueShow:
+      m_PersistentCalls:
+        m_Calls: []
+    onEventEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: Put on Mask
+    showObjects:
+    - {fileID: 625441450}
+    - {fileID: 1343040320}
+    hideObjects: []
+    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
+    dialogueText: Good, good. I'm glad it's working...
+    dialogueDuration: 3
+    nextEventDelay: 4
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
+    onEventStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 641720623}
+          m_TargetAssemblyTypeName: MaskManager, Assembly-CSharp
+          m_MethodName: EquipMask
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5638,6 +5722,13 @@ MonoBehaviour:
     dialogueText: Default dialogue
     dialogueDuration: 0
     nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -5654,6 +5745,13 @@ MonoBehaviour:
     dialogueText: Default dialogue
     dialogueDuration: 0
     nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -5670,38 +5768,13 @@ MonoBehaviour:
     dialogueText: Default dialogue
     dialogueDuration: 0
     nextEventDelay: 0
-    onEventStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
-    onEventEnd:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventName: 
-    showObjects: []
-    hideObjects: []
-    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
-    dialogueText: Default dialogue
-    dialogueDuration: 0
-    nextEventDelay: 0
-    onEventStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueShow:
-      m_PersistentCalls:
-        m_Calls: []
-    onEventEnd:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventName: 
-    showObjects: []
-    hideObjects: []
-    dialoguePrefab: {fileID: 4649911781597492892, guid: 6a0d3a06f4c4e4f91b05fb071175561c, type: 3}
-    dialogueText: Default dialogue
-    dialogueDuration: 0
-    nextEventDelay: 0
+    patrolObject1: {fileID: 0}
+    patrolPointA1: {x: -5, y: 0}
+    patrolPointB1: {x: 5, y: 0}
+    patrolObject2: {fileID: 0}
+    patrolPointA2: {x: 0, y: 5}
+    patrolPointB2: {x: 0, y: -5}
+    startPatrolOnEvent: 0
     onEventStart:
       m_PersistentCalls:
         m_Calls: []
@@ -6172,13 +6245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23638953055cf504d97256635d7d423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoPatrolMovement
-  speed: 5
-  pointA: {x: -28.27, y: -13.4}
-  pointB: {x: 5, y: 0}
-  spriteUp: {fileID: 0}
-  spriteDown: {fileID: 0}
-  spriteLeft: {fileID: 0}
-  spriteRight: {fileID: 0}
+  speed: 8
+  baseSprite: {fileID: -5459632842594515034, guid: 9a70938fb1a43774dab5417b6ef0ebad, type: 3}
   wobbleAngle: 3
   wobbleSpeed: 4
 --- !u!61 &1343040322
@@ -6510,7 +6578,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402762042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -6523,7 +6591,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

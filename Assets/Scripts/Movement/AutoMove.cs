@@ -1,82 +1,77 @@
 using UnityEngine;
+using System.Collections;
 
-public class AutoPatrolMovement : MonoBehaviour
+public class PatrolController : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Patrol Settings")]
     public float speed = 5f;
-    public Vector2 pointA = new Vector2(-5f, 0f);
-    public Vector2 pointB = new Vector2(5f, 0f);
-
-    [Header("Sprites (Left-facing defaults)")]
-    public Sprite spriteUp;
-    public Sprite spriteDown;
-    public Sprite spriteLeft;
-    public Sprite spriteRight;
-
-    [Header("Wobble")]
+    public Sprite baseSprite;
     public float wobbleAngle = 3f;
     public float wobbleSpeed = 4f;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Vector2 targetPoint;
-    private float wobbleTime = 0f;
-    private string currentDirection = "left";
+    private Vector2 pointA;
+    private Vector2 pointB;
+    private float wobbleTime;
+    private bool isPatrolling;
+    private Coroutine patrolCoroutine;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = spriteLeft;
-        targetPoint = pointB;  // Start moving to B
+
+        spriteRenderer.sprite = baseSprite;
+        rb.gravityScale = 0f;
+        rb.freezeRotation = true;
     }
 
-    void Update()
+    public void StartPatrol(Vector2 a, Vector2 b)
     {
-        Vector2 currentPos = transform.position;
-        Vector2 directionToTarget = (targetPoint - currentPos).normalized;
-        
-        // Update sprite/wobble
-        string newDirection = GetDirection(directionToTarget);
-        if (newDirection != currentDirection)
+        StopPatrol();
+
+        pointA = a;
+        pointB = b;
+        patrolCoroutine = StartCoroutine(PatrolRoutine());
+    }
+
+    public void StopPatrol()
+    {
+        if (patrolCoroutine != null)
+            StopCoroutine(patrolCoroutine);
+
+        patrolCoroutine = null;
+        isPatrolling = false;
+        rb.linearVelocity = Vector2.zero;
+        wobbleTime = 0f;
+        transform.rotation = Quaternion.identity;
+    }
+
+    private IEnumerator PatrolRoutine()
+    {
+        isPatrolling = true;
+        targetPoint = pointB;
+
+        while (isPatrolling)
         {
-            spriteRenderer.sprite = GetSprite(newDirection);
-            currentDirection = newDirection;
+            Vector2 currentPos = rb.position;
+            Vector2 dir = (targetPoint - currentPos).normalized;
+
+            rb.MovePosition(currentPos + dir * speed * Time.deltaTime);
+
+            if (Mathf.Abs(dir.x) > 0.01f)
+                spriteRenderer.flipX = dir.x < 0;
+
+            wobbleTime += Time.deltaTime * wobbleSpeed;
+            float wobble = Mathf.Sin(wobbleTime) * wobbleAngle;
+            transform.rotation = Quaternion.Euler(0, 0, wobble);
+
+            if (Vector2.Distance(currentPos, targetPoint) < 0.1f)
+                targetPoint = (targetPoint == pointA) ? pointB : pointA;
+
+            yield return null;
         }
-
-        wobbleTime += Time.deltaTime * wobbleSpeed;
-        float wobble = Mathf.Sin(wobbleTime) * wobbleAngle;
-        transform.rotation = Quaternion.Euler(0, 0, wobble);
-
-        // Switch points when close
-        if (Vector2.Distance(currentPos, targetPoint) < 0.1f)
-        {
-            targetPoint = (targetPoint == pointA) ? pointB : pointA;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        Vector2 movement = (targetPoint - rb.position).normalized;
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-    }
-
-    string GetDirection(Vector2 dir)
-    {
-        if (Mathf.Abs(dir.y) > Mathf.Abs(dir.x))
-            return dir.y > 0 ? "up" : "down";
-        return dir.x > 0 ? "right" : "left";
-    }
-
-    Sprite GetSprite(string dir)
-    {
-        return dir switch
-        {
-            "up" => spriteUp,
-            "down" => spriteDown,
-            "right" => spriteRight,
-            "left" => spriteLeft,
-            _ => spriteLeft
-        };
     }
 }
