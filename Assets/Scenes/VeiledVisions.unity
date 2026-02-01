@@ -8149,7 +8149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd828c203d8054fab80df0066c5c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
-  uiElement: {fileID: 0}
+  uiElement: {fileID: 1473291025}
   defaultText: Find mask 3!
   mask3Text: You've found it! Use fire mask.
   displayDuration: 3
@@ -8922,6 +8922,11 @@ PrefabInstance:
 --- !u!224 &1473291024 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5789762376631887446, guid: 6a40c77c2b4f20848870ac7e3e3011eb, type: 3}
+  m_PrefabInstance: {fileID: 1473291023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1473291025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4649911781597492892, guid: 6a40c77c2b4f20848870ac7e3e3011eb, type: 3}
   m_PrefabInstance: {fileID: 1473291023}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518209940
