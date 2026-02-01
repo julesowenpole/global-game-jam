@@ -5,7 +5,7 @@ public class MaskManager : MonoBehaviour
     [SerializeField] public bool[] masksFound = new bool[4];
 
     [Header("Current Mask")]
-    [SerializeField] private int currentMaskId = 0;  // ALWAYS 0-3 equipped
+    [SerializeField] private int currentMaskId = -1;  // ALWAYS 0-3 equipped
 
     public bool IsMaskFound(int id)
     {
