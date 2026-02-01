@@ -275,7 +275,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 841347598}
+      - m_Target: {fileID: 841347600}
         m_TargetAssemblyTypeName: LoadMainGame, Assembly-CSharp
         m_MethodName: LoadNextScene
         m_Mode: 1
@@ -642,7 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841347599}
-  - component: {fileID: 841347598}
+  - component: {fileID: 841347600}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -650,19 +650,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &841347598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841347597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ccf2f482c4ff2418a74ecc0759f9e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LoadMainGame
-  mainTheme: {fileID: 8300000, guid: 6dd2bb9bec3664762b905313b1851d8e, type: 3}
 --- !u!4 &841347599
 Transform:
   m_ObjectHideFlags: 0
@@ -678,6 +665,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &841347600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841347597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ccf2f482c4ff2418a74ecc0759f9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadMainGame
+  mainTheme: {fileID: 8300000, guid: 6dd2bb9bec3664762b905313b1851d8e, type: 3}
 --- !u!1 &955310344
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +710,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d5c0926bdce0343288db79d9ff980546, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.527
   m_Pitch: 1
   Loop: 0
@@ -834,7 +834,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6dd2bb9bec3664762b905313b1851d8e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
